@@ -1,0 +1,9 @@
+label[for="via"] {
+	display: none;
+}
+label[for="citta"] {
+	display: none;
+}
+label[for="GPS"] {
+	display: none;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<body>
+<!-- Main -->
+				<div id="main" class="wrapper style1">
+					<div class="container">
+						<header class="major">
+							<h2>Modifica la tua segnalazione</h2>
+							<p>Seleziona i campi da modificare</p>
+						</header>
+
+
+
+
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+  
+      <!-- ################################################################################################ -->
+		
+     <form class="modal-content animate" method="POST" action="">
+ 	
+		
+      <label align="center" for="uname" ><b>Titolo:</b></label>
+		 <input type="text" placeholder="Modifica il titolo della segnalazione" name="titolo"  maxlength="100" pattern="{101}"><br>
+		 
+       
+
+      <label for="uname" align="center"><b>Descrizione:</b></label>
+       <textarea name="descrizione" placeholder = "Modifica la descrizione della segnalazione" rows="5" cols="32"  maxlength="300"  title="Massimo 300 caratteri"></textarea>
+		 <br>
+		
+<label for="psw" align="center"><b>Gravità:</b></label>
+      <div class="col-4 col-12-medium">
+            <input type="radio" id="priority-low" name="gravita"  value="bassa"  >
+            <label for="priority-low" style="color:rgba(58,164,0,1.00)">Bassa</label>
+          </div>
+          <div class="col-4 col-12-medium">
+            <input type="radio" id="priority-normal" name="gravita" value="media" >
+            <label for="priority-normal" style="color:rgba(193,163,4,1.00)">Media</label>
+          </div>
+          <div class="col-4 col-12-medium">
+            <input type="radio" id="priority-high" name="gravita" value="alta" >
+            <label for="priority-high" style="color:red">Alta</label>
+          </div>
+				
+
+
+      
+		
+     
+		<br>
+		<center><input type="submit" value="Modifica" name="Modifica" class="primary" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="reset" value="Cancella" align="center" /></center>
+      	
+    
+  </form>
+</div>
+
+   
+    <!-- ################################################################################################ -->
+    <!-- / main body -->
+    
+</div>
+
+</body>
+</html>
+
+

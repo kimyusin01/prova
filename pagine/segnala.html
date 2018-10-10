@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq-yY0TwFTgv3KcX3R4R3b1Gj8G_pazR0">
+	</script>
+<script src="./scriptCitizengo/segnala.js">
+	</script>
+
+
+ <link href="./cssCitizengo/segnala.css" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body class="is-preload">
+<div id="page-wrapper"> 
+  
+  <!-- Main -->
+  <div id="main" class="wrapper style1">
+    <div class="container">
+      <header class="major">
+        <h2>Invia segnalazione</h2>
+        <p>Qui puoi inviare la segnalazione</p>
+      </header>
+      <form method="post" enctype="multipart/form-data" action="./index.php?pagina=segnala.php" id="form">
+        <div class="container" > <b>Titolo della segnalazione:</b>
+          <input type="text" placeholder = "Inserisci il titolo della segnalazione" class="control-label"  name="titolo" style="display: flex; flex-direction: column;" required maxlength="100" >
+          <br>
+          <b>Descrizione della segnalazione:</b>
+          <textarea name="descrizione" placeholder = "Inserisci la descrizione della segnalazione" rows="5" cols="32"  required maxlength="300"  title="Massimo 300 caratteri"></textarea>
+          <br>
+          <label for="gravita"><b>Gravita'</b></label>
+          <div class="col-4 col-12-medium">
+            <input type="radio" id="priority-low" name="gravita"  value="bassa" required checked="checked" >
+            <label for="priority-low" style="color:rgba(58,164,0,1.00)">Bassa</label>
+          </div>
+          <div class="col-4 col-12-medium">
+            <input type="radio" id="priority-normal" name="gravita" value="media" required>
+            <label for="priority-normal" style="color:rgba(193,163,4,1.00)">Media</label>
+          </div>
+          <div class="col-4 col-12-medium">
+            <input type="radio" id="priority-high" name="gravita" value="alta" required>
+            <label for="priority-high" style="color:red">Alta</label>
+          </div>
+          <br>
+          <label> <b>Scegli come inserire la posizione:</b></label>
+          <input type="button" id= "manuale" value="Manuale" onclick="mostraManuale()">
+          <input type="button" id= "automatico" value="GPS" onclick="mostraGPS()">
+          <br>
+          <br>
+          <label id="via" for="via"><b>Via</b>
+          	
+            <input type="text" placeholder="Inserisci la via" name="via"  maxlength="100"  title="Massimo 100 caratteri.">
+            <br>
+          </label>
+          <label id="citta" for="citta"> <b>Citta</b>
+            <input type="text"  placeholder="Inserisci la città" name="citta" maxlength="100" title="Massimo 300 caratteri.">
+          </label>
+          <br>
+          <label for="GPS" id="GPS"> <b>Clicca qui per rilevare la posizione:</b>
+            <input type="button" id= "button" value="Rileva Posizione" onclick="getLocation()">
+          </label>
+          <br>
+          <input type="hidden" id="lat" name="latitudine" value="">
+          <input type="hidden" id="long" name="longitudine" value="" >
+          <label for="file"><b>Seleziona le immagini o i video da caricare: </b></label>
+          <input type="file" name="file[]" required multiple/>
+          <div class="col-12">
+            <ul class="actions">
+              <li></li>
+            </ul>
+          </div>
+          <div class="col-12">
+            <ul class="actions">
+              <li>
+                <input type="submit" name="invio" value="Invia" class="primary" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- ################################################################################################ --> 
+  <!-- / main body --> 
+  
+</div>
+
+</body>
+</html>
+
+<script>
+	
+		function getLocation() {
+    if(navigator.geolocation) {
+navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+
+function geoSuccess(position) {
+	
+    document.getElementById("lat").value = position.coords.latitude;
+	
+    document.getElementById("long").value = position.coords.longitude;
+	
+	 document.getElementById("via").value = null;
+	
+	 document.getElementById("via").style.display = "none";
+	
+	 document.getElementById("citta").value = null;
+	
+	document.getElementById("citta").style.display = "none";
+	
+	 document.getElementById("button").value = "Posizione Rilevata!";
+	
+	
+    
+}
+
+	function geoError() {
+    alert("Errore: impossibile geolocalizzare la segnalazione.");
+}
+	
+	function mostraManuale() {
+		document.getElementById("via").style.display = "block";
+		document.getElementById("citta").style.display = "block";
+		document.getElementById("GPS").style.display = "none";
+	}
+	
+	function mostraGPS() {
+		document.getElementById("via").style.display = "none";
+		document.getElementById("citta").style.display = "none";
+		document.getElementById("GPS").style.display = "block";
+	}
+</script>
